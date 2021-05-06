@@ -1,0 +1,34 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Mozart409",
+      "name": "Amadeus",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/38767929?v=4",
+      "profile": "https://github.com/Mozart409",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "egdavid",
+      "name": "David Eugene",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/10560326?v=4",
+      "profile": "https://www.synaptech.fr",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "next-starter-tailwind",
+  "projectOwner": "taylorbryant",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
