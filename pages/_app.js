@@ -6,11 +6,10 @@ import "@fontsource/poppins";
 
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
-import Layout from "../modules/components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <ChakraProvider>
       <Head>
         <title>RISTEK.link | No config customizable url shortener.</title>
         <meta
@@ -23,10 +22,8 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="shortcut icon" href="/logo.svg" />
       </Head>
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </Layout>
+      <Component {...pageProps} />
+    </ChakraProvider>
   );
 }
 

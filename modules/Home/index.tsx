@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import LeftBanner from "../images/LeftBanner";
 import RightBanner from "../images/RightBanner";
 import RistekLogo from "../images/Logo";
-import Layout from "../components/Layout";
 import BottomBanner from "../images/Bottom";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -85,60 +84,56 @@ const HomePage = () => {
   };
 
   return (
-    <Layout>
-      <div className="w-full h-screen max-h-screen overflow-hidden relative">
-        <LeftBanner className="absolute top-0 left-0 hidden h-screen w-auto lg:block" />
-        <BottomBanner className="block lg:hidden absolute bottom-0 w-full h-auto" />
-        <RightBanner className="absolute top-0 right-0 hidden h-screen w-auto lg:block" />
-        <div className="h-full w-full left-0 right-0 top-0 bottom-0 ">
-          <div className="w-full h-full flex flex-col justify-center items-center px-5">
-            <a href="http://ristek.cs.ui.ac.id/" target="__blank">
-              <RistekLogo className=" top-2 absolute" />
-            </a>
-            <div className="font-poppins font-bold text-4xl md:text-6xl text-black">
-              RISTEK.<span className="text-primary">LINK</span>
-            </div>
-            <div className="font-poppins font-medium text-sm md:text-xl text-center mb-5">
-              The easiest customizable url shortener, ever.
-            </div>
-            <div className="w-full max-w-sm flex flex-col items-center relative">
+    <div className="w-full h-screen max-h-screen overflow-hidden relative">
+      <LeftBanner className="absolute top-0 left-0 hidden h-screen w-auto lg:block" />
+      <BottomBanner className="block lg:hidden absolute bottom-0 w-full h-auto" />
+      <RightBanner className="absolute top-0 right-0 hidden h-screen w-auto lg:block" />
+      <div className="h-full w-full left-0 right-0 top-0 bottom-0 ">
+        <div className="w-full h-full flex flex-col justify-center items-center px-5">
+          <a href="http://ristek.cs.ui.ac.id/" target="__blank">
+            <RistekLogo className=" top-2 absolute" />
+          </a>
+          <div className="font-poppins font-bold text-4xl md:text-6xl text-black">
+            RISTEK.<span className="text-primary">LINK</span>
+          </div>
+          <div className="font-poppins font-medium text-sm md:text-xl text-center mb-5">
+            The easiest customizable url shortener, ever.
+          </div>
+          <div className="w-full max-w-sm flex flex-col items-center relative">
+            <Input
+              placeholder="Enter your long url"
+              value={url}
+              onChange={(e) => handleUrlType(e.target.value)}
+              isError={!isUrlValid}
+              errorMessage={isUrlValid ? "" : "Please enter a valid url."}
+            />
+            <div className="my-5 flex flex-row items-center w-full justify-center">
+              <div className="font-poppins font-medium mr-1">ristek.link/</div>
               <Input
-                placeholder="Enter your long url"
-                value={url}
-                onChange={(e) => handleUrlType(e.target.value)}
-                isError={!isUrlValid}
-                errorMessage={isUrlValid ? "" : "Please enter a valid url."}
+                placeholder="Enter your short url"
+                onChange={(e) => handleAliasType(e.target.value)}
+                value={alias}
               />
-              <div className="my-5 flex flex-row items-center w-full justify-center">
-                <div className="font-poppins font-medium mr-1">
-                  ristek.link/
-                </div>
-                <Input
-                  placeholder="Enter your short url"
-                  onChange={(e) => handleAliasType(e.target.value)}
-                  value={alias}
-                />
-              </div>
-              <Button
-                disabled={!isAllowed}
-                onClick={() => isAllowed && !isLoading && handleSubmit()}
-                isLoading={isLoading}
-              >
-                <div className=" font-semibold text-lg">Shorten!</div>
-              </Button>
-              {isGenerated && (
-                <ResultBox
-                  onCopy={() => handleCopy()}
-                  isCopied={isCopied}
-                  isLoading={isLoading}
-                  alias={result}
-                />
-              )}
             </div>
+            <Button
+              disabled={!isAllowed}
+              onClick={() => isAllowed && !isLoading && handleSubmit()}
+              isLoading={isLoading}
+            >
+              <div className=" font-semibold text-lg">Shorten!</div>
+            </Button>
+            {isGenerated && (
+              <ResultBox
+                onCopy={() => handleCopy()}
+                isCopied={isCopied}
+                isLoading={isLoading}
+                alias={result}
+              />
+            )}
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

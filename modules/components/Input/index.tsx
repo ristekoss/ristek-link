@@ -6,19 +6,18 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: FC<InputProps> = (props) => {
+  const { isError, errorMessage, ...rest } = props;
   return (
     <div className="w-full h-full">
       <input
         className={`border-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:border-2 focus:ring-transparent border-2 appearance-none rounded-sm h-10 w-full p-3 ${
-          props.isError
+          isError
             ? "bg-error bg-opacity-10 focus:bg-error focus:bg-opacity-10 border-error focus:border-error "
             : "bg-faded"
         } focus:bg-white focus:shadow-md text-tertiary`}
-        {...props}
+        {...rest}
       />
-      {props.isError && (
-        <div className="text-error pt-2">{props.errorMessage}</div>
-      )}
+      {isError && <div className="text-error pt-2">{errorMessage}</div>}
     </div>
   );
 };
