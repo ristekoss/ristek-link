@@ -1,8 +1,7 @@
 {
-  "name": "next-starter-tailwind",
-  "version": "2.0.0",
-  "description": "Next.js starter styled with Tailwind CSS",
-  "main": "index.js",
+  "name": "ristek-link",
+  "version": "1.0.0",
+  "description": "No config url shortener, by RISTEK.",
   "scripts": {
     "dev": "next",
     "build": "next build",
