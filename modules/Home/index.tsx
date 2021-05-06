@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import LeftBanner from "../../images/LeftBanner";
-import RightBanner from "../../images/RightBanner";
-import RistekLogo from "../../images/Logo";
-import Layout from "../../components/Layout";
-import BottomBanner from "../../images/Bottom";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import ResultBox from "../../components/ResultBox";
+import LeftBanner from "../images/LeftBanner";
+import RightBanner from "../images/RightBanner";
+import RistekLogo from "../images/Logo";
+import Layout from "../components/Layout";
+import BottomBanner from "../images/Bottom";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import ResultBox from "../components/ResultBox";
+import { useToast } from "@chakra-ui/react";
+import useClipboard from "react-use-clipboard";
 
 const HomePage = () => {
   const [alias, setAlias] = useState("");
@@ -14,7 +16,12 @@ const HomePage = () => {
   const [isAllowed, setIsAllowed] = useState(false);
   const [isUrlValid, setIsUrlValid] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
+  const [isGenerated, setIsGenerated] = useState(false);
+  const [result, setResult] = useState("");
+  const [isCopied, setCopied] = useClipboard(`https://ristek.link/${result}`, {
+    successDuration: 3000,
+  });
+  const toast = useToast();
 
   const handleUrlType = (text: string) => {
     setUrl(text);
@@ -34,6 +41,7 @@ const HomePage = () => {
   };
 
   const handleSubmit = () => {
+    setIsLoading(true);
     fetch("/api/shorten", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -44,9 +52,25 @@ const HomePage = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("INi result", result);
+        if (result.ok) {
+          setResult(result.data);
+          setIsGenerated(true);
+          setIsLoading(false);
+          setUrl("");
+          setAlias("");
+        } else {
+          setIsLoading(false);
+          setAlias("");
+          setIsGenerated(false);
+          toast({
+            title: "Error occured",
+            description: result.data,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        }
       });
-    // setIsLoading(true);
   };
 
   useEffect(() => {
@@ -57,8 +81,7 @@ const HomePage = () => {
   }, [url, alias]);
 
   const handleCopy = () => {
-    alert("clicked!");
-    setIsCopied((prev) => !prev);
+    setCopied();
   };
 
   return (
@@ -103,11 +126,14 @@ const HomePage = () => {
               >
                 <div className=" font-semibold text-lg">Shorten!</div>
               </Button>
-              <ResultBox
-                onCopy={() => handleCopy()}
-                isCopied={isCopied}
-                isLoading
-              />
+              {isGenerated && (
+                <ResultBox
+                  onCopy={() => handleCopy()}
+                  isCopied={isCopied}
+                  isLoading={isLoading}
+                  alias={result}
+                />
+              )}
             </div>
           </div>
         </div>
