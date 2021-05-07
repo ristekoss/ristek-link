@@ -26,7 +26,7 @@ const HomePage = () => {
     setUrl(text);
     const urlRegexPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
     var regex = new RegExp(urlRegexPattern);
-    if (text.match(regex)) {
+    if (text.match(regex) && text.split(" ").length === 1) {
       setIsAllowed(true);
       setIsUrlValid(true);
       return;
