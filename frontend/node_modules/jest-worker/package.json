@@ -1,0 +1,35 @@
+{
+  "name": "jest-worker",
+  "version": "27.0.0-next.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/facebook/jest.git",
+    "directory": "packages/jest-worker"
+  },
+  "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": "./build/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@types/node": "*",
+    "merge-stream": "^2.0.0",
+    "supports-color": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/merge-stream": "^1.1.2",
+    "@types/supports-color": "^7.2.0",
+    "get-stream": "^6.0.0",
+    "jest-leak-detector": "^27.0.0-next.5",
+    "worker-farm": "^1.6.0"
+  },
+  "engines": {
+    "node": "^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "0a2b94282170b6d4cc26c2d2003cc04ffebe5e3f"
+}

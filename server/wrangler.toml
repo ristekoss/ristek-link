@@ -1,0 +1,10 @@
+name = "ristek-link-workers"
+type = "webpack"
+account_id = "3c2a6f751892e98c549c055226b400bb"
+workers_dev = true
+route = ""
+zone_id = ""
+webpack_config = "webpack.config.js"
+kv_namespaces = [ 
+  { binding = "LINKS", preview_id = "070af3916a9f469b8583d62e7b9735a2", id = "070af3916a9f469b8583d62e7b9735a2" }
+]

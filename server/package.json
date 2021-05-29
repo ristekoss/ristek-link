@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "ristek-link-workers",
+  "version": "1.0.0",
+  "description": "A template for kick starting a Cloudflare Workers project",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'",
+    "dev": "wrangler dev"
+  },
+  "author": "Jonathan Filbert <jonathan.lisyanto@bpkpenabur.sch.id>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {}
+}

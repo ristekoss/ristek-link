@@ -1,0 +1,2 @@
+"use strict";exports.__esModule=true;exports.TextDecoder=void 0;const textDecoder=typeof TextDecoder!=='undefined'?TextDecoder:require('util').TextDecoder;exports.TextDecoder=textDecoder;
+//# sourceMappingURL=text-decoder.js.map

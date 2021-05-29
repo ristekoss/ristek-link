@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.ts"],"names":[],"mappings":";;;;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAEA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA","sourcesContent":["export * from \"./icon\"\nexport { default } from \"./icon\"\nexport * from \"./create-icon\"\n"],"file":"index.js"}

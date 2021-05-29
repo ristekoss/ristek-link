@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.ts"],"names":["default"],"mappings":"AAAA,cAAc,mBAAd;AACA,SAASA,OAAT,QAAwB,mBAAxB","sourcesContent":["export * from \"./visually-hidden\"\nexport { default } from \"./visually-hidden\"\n"],"file":"index.js"}
