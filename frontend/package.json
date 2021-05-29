@@ -1,7 +1,7 @@
 {
   "name": "ristek-link",
   "version": "1.0.0",
-  "description": "No config url shortener, by RISTEK.",
+  "description": "No config url shortener, by RISTEK Fasilkom UI.",
   "scripts": {
     "dev": "next",
     "build": "next build",
