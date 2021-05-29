@@ -2,7 +2,7 @@
 
 No config, no log-ins, open-source, customizable url shortener. Paste-shorten-copy, that's it.
 
-## Installation
+## Installation (both front-end and back-end)
 
 1. Use `yarn` or `npm` to install the dependency
 
