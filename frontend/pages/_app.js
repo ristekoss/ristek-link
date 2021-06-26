@@ -34,6 +34,11 @@ function MyApp({ Component, pageProps }) {
         />
         <meta property="og:url" content="https://ristek.link" />
         <link rel="shortcut icon" href="/logo.svg" />
+        <script
+          data-ad-client="ca-pub-2189563930887054"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
       </Head>
       <Component {...pageProps} />
     </ChakraProvider>
