@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/index.ts"],"names":["default"],"mappings":"AAAA,cAAc,aAAd;AACA,SAASA,OAAT,QAAwB,aAAxB","sourcesContent":["export * from \"./css-reset\"\nexport { default } from \"./css-reset\"\n"],"file":"index.js"}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/index.ts"],"names":[],"mappings":"AAAA,cAAc,QAAd;AACA,cAAc,YAAd","sourcesContent":["export * from \"./tabs\"\nexport * from \"./use-tabs\"\n"],"file":"index.js"}

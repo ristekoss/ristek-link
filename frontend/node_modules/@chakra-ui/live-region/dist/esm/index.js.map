@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/index.ts"],"names":[],"mappings":"AAAA,cAAc,eAAd;AACA,cAAc,mBAAd","sourcesContent":["export * from \"./live-region\"\nexport * from \"./use-live-region\"\n"],"file":"index.js"}

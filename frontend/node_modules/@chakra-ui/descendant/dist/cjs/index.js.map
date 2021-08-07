@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/index.ts"],"names":[],"mappings":";;;;;AAKA","sourcesContent":["export type {\n  DescendantsManager,\n  Descendant,\n  DescendantOptions,\n} from \"./descendant\"\nexport { createDescendantContext } from \"./use-descendant\"\nexport { createDescendantContext as default } from \"./use-descendant\"\n"],"file":"index.js"}

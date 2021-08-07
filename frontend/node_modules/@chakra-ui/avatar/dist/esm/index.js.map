@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/index.ts"],"names":[],"mappings":"AAAA,cAAc,UAAd;AACA,cAAc,gBAAd","sourcesContent":["export * from \"./avatar\"\nexport * from \"./avatar-group\"\n"],"file":"index.js"}
