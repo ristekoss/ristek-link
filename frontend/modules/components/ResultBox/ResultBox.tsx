@@ -3,7 +3,7 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { ResultBoxProps } from "./types";
 
 const ResultBox = (props: ResultBoxProps) => {
-  const ristekLink = `https://ristek.link/${props.alias}`;
+  const ristekLink = `${window.location.origin}/${props.alias}`;
   if (props.isLoading) {
     return (
       <div className="absolute -bottom-32 w-full h-8 bg-gray-300 animate-pulse  py-9 flex flex-row items-center justify-between rounded-md px-4 mt-3 shadow-lg" />
