@@ -1,5 +1,12 @@
 module.exports = {
-  purge: ["./components/**/*.tsx", "./pages/**/*.tsx", "./modules/**/*.tsx"],
+  purge: {
+    enabled: true,
+    content: [
+      "./components/**/*.tsx",
+      "./pages/**/*.tsx",
+      "./modules/**/*.tsx",
+    ],
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -26,24 +33,10 @@ module.exports = {
             opacity: "100%",
           },
         },
-        "focus-in-expand": {
-          "0%": {
-            "letter-spacing": "-.5em",
-            filter: "blur(12px)",
-            opacity: "0",
-          },
-          to: {
-            filter: "blur(0)",
-            opacity: "1",
-          },
-        },
         "tracking-in-expand": {
           "0%": {
             "letter-spacing": "-.5em",
             opacity: "0",
-          },
-          "40%": {
-            opacity: "1",
           },
           to: {
             opacity: "1",
