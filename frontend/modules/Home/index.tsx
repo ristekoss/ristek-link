@@ -187,25 +187,24 @@ const HomePage = () => {
           )}
         </div>
       </div>
-      <div>
-        <a
-          href="https://www.producthunt.com/posts/ristek-link?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ristek-link"
-          target="_blank"
-          style={{
-            position: "absolute",
-            bottom: 10,
-            left: "50%",
-            transform: "translate(-50%, 0)",
-          }}
-        >
-          <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=295238&theme=light"
-            alt="RISTEK.Link - World's easiest open-source free customisable url shortener | Product Hunt"
-            width="250"
-            height="54"
-          />
-        </a>
-      </div>
+
+      <a
+        href="https://www.producthunt.com/posts/ristek-link?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ristek-link"
+        target="_blank"
+        style={{
+          position: "absolute",
+          bottom: 10,
+          left: "50%",
+          transform: "translate(-50%, 0)",
+        }}
+      >
+        <img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=295238&theme=light"
+          alt="RISTEK.Link - World's easiest open-source free customisable url shortener | Product Hunt"
+          width="250"
+          height="54"
+        />
+      </a>
     </div>
   );
 };
