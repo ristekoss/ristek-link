@@ -121,15 +121,15 @@ const HomePage = () => {
 
   return (
     <div className="w-full h-screen max-h-screen overflow-hidden relative ">
-      <LeftBanner className="absolute top-0 left-0 hidden h-screen w-auto lg:block animate-fade-in" />
-      <BottomBanner className="block lg:hidden absolute bottom-0 w-full h-auto animate-fade-in" />
-      <RightBanner className="absolute top-0 right-0 hidden h-screen w-auto lg:block animate-fade-in" />
+      <LeftBanner className="absolute top-0 left-0 hidden h-screen w-auto lg:block " />
+      <BottomBanner className="block lg:hidden absolute bottom-0 w-full h-auto " />
+      <RightBanner className="absolute top-0 right-0 hidden h-screen w-auto lg:block " />
       <a
         href="http://ristek.cs.ui.ac.id/"
         target="__blank"
         className=" top-2 absolute left-1/2"
       >
-        <RistekLogo className="animate-fade-in" />
+        <RistekLogo />
       </a>
       <div
         className="w-full px-5"
@@ -145,14 +145,14 @@ const HomePage = () => {
           alignItems: "center",
         }}
       >
-        <div className="font-poppins font-bold text-4xl md:text-6xl text-black text-center animate-tracking-in-expand">
+        <div className="font-poppins font-bold text-4xl md:text-6xl text-black text-center">
           RISTEK.<span className="text-primary">LINK</span>
         </div>
-        <div className="font-poppins font-medium text-sm md:text-xl mb-5 text-center animate-fade-in-text">
+        <div className="font-poppins font-medium text-sm md:text-xl mb-5 text-center">
           The easiest customizable url shortener, ever.
         </div>
 
-        <div className="w-full max-w-sm flex flex-col items-center relative animate-slide-top">
+        <div className="w-full max-w-sm flex flex-col items-center relative">
           <Input
             placeholder="Enter your long url"
             value={url}
@@ -187,7 +187,7 @@ const HomePage = () => {
           )}
         </div>
       </div>
-      <div className="animate-fade-in-text">
+      <div>
         <a
           href="https://www.producthunt.com/posts/ristek-link?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ristek-link"
           target="_blank"
