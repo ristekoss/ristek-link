@@ -39,7 +39,6 @@ const HomePage = () => {
   const handleAliasType = (text: string) => {
     setAlias(text.split(" ").length > 1 ? text.split(" ").join("-") : text);
   };
-
   const handleSubmit = () => {
     setIsLoading(true);
     fetch("/api/shorten", {
@@ -72,11 +71,47 @@ const HomePage = () => {
         }
       });
   };
+  const handleEmpty = () => {
+    if (!isUrlValid)
+      toast({
+        title: "Error occured",
+        description: "Please enter a valid url",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    else if (url === "" && alias === "") {
+      toast({
+        title: "Error occured",
+        description: "Please enter long url and short url",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else if (alias === "") {
+      toast({
+        title: "Error occured",
+        description: "Please enter short url",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else if (url === "") {
+      toast({
+        title: "Error occured",
+        description: "Please enter long url",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
 
   useEffect(() => {
-    if (!!alias && isUrlValid) {
+    if (!!alias && isUrlValid && url !== "") {
       return setIsAllowed(true);
     }
+
     setIsAllowed(false);
   }, [url, alias]);
 
@@ -134,7 +169,9 @@ const HomePage = () => {
           </div>
           <Button
             disabled={!isAllowed}
-            onClick={() => isAllowed && !isLoading && handleSubmit()}
+            onClick={() =>
+              isAllowed && !isLoading ? handleSubmit() : handleEmpty()
+            }
             isLoading={isLoading}
           >
             <div className=" font-semibold text-lg">Shorten!</div>
