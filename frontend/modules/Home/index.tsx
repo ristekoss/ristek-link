@@ -21,6 +21,8 @@ const HomePage = () => {
     successDuration: 3000,
   });
   const toast = useToast();
+  const isAliasEmpty = alias === "";
+  const isUrlEmpty = url === "";
 
   const handleUrlType = (text: string) => {
     setUrl(text);
@@ -80,26 +82,26 @@ const HomePage = () => {
         duration: 5000,
         isClosable: true,
       });
-    else if (url === "" && alias === "") {
+    else if (isUrlEmpty && isAliasEmpty) {
       toast({
-        title: "Error occured",
+        title: "Long url and short url empty",
         description: "Please enter long url and short url",
         status: "error",
         duration: 5000,
         isClosable: true,
       });
-    } else if (alias === "") {
+    } else if (isUrlEmpty) {
       toast({
-        title: "Error occured",
-        description: "Please enter short url",
+        title: "Long url empty",
+        description: "Please enter long url",
         status: "error",
         duration: 5000,
         isClosable: true,
       });
-    } else if (url === "") {
+    } else if (isAliasEmpty) {
       toast({
-        title: "Error occured",
-        description: "Please enter long url",
+        title: "Short url empty",
+        description: "Please enter short url",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -108,7 +110,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (!!alias && isUrlValid && url !== "") {
+    if (!!alias && isUrlValid && !isUrlEmpty) {
       return setIsAllowed(true);
     }
 
