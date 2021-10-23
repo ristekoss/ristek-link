@@ -5,6 +5,7 @@ import RistekLogo from "../images/Logo";
 import BottomBanner from "../images/Bottom";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Toast from "../components/Toast";
 import ResultBox from "../components/ResultBox";
 import { useToast } from "@chakra-ui/react";
 import useClipboard from "react-use-clipboard";
@@ -63,49 +64,23 @@ const HomePage = () => {
           setIsLoading(false);
           setAlias("");
           setIsGenerated(false);
-          toast({
-            title: "Error occured",
-            description: result.data,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          });
+          Toast("Error occured", result.data, true);
         }
       });
   };
   const handleEmpty = () => {
-    if (!isUrlValid)
-      toast({
-        title: "Error occured",
-        description: "Please enter a valid url",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    else if (isUrlEmpty && isAliasEmpty) {
-      toast({
-        title: "Long url and short url empty",
-        description: "Please enter long url and short url",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
+    if (!isUrlValid) {
+      Toast("Url invalid", "Please enter a valid url", true);
+    } else if (isUrlEmpty && isAliasEmpty) {
+      Toast(
+        "Long url and short url empty",
+        "Please enter long url and short url",
+        true
+      );
     } else if (isUrlEmpty) {
-      toast({
-        title: "Long url empty",
-        description: "Please enter long url",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
+      Toast("Long url empty", "Please enter long url", true);
     } else if (isAliasEmpty) {
-      toast({
-        title: "Short url empty",
-        description: "Please enter short url",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
+      Toast("Short url empty", "Please enter short url", true);
     }
   };
 
