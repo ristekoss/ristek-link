@@ -5,6 +5,7 @@ import RistekLogo from "../images/Logo";
 import BottomBanner from "../images/Bottom";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Toast from "../components/Toast";
 import ResultBox from "../components/ResultBox";
 import { useToast } from "@chakra-ui/react";
 import useClipboard from "react-use-clipboard";
@@ -21,6 +22,8 @@ const HomePage = () => {
     successDuration: 3000,
   });
   const toast = useToast();
+  const isAliasEmpty = alias === "";
+  const isUrlEmpty = url === "";
 
   const handleUrlType = (text: string) => {
     setUrl(text);
@@ -39,7 +42,6 @@ const HomePage = () => {
   const handleAliasType = (text: string) => {
     setAlias(text.split(" ").length > 1 ? text.split(" ").join("-") : text);
   };
-
   const handleSubmit = () => {
     setIsLoading(true);
     fetch("/api/shorten", {
@@ -62,21 +64,31 @@ const HomePage = () => {
           setIsLoading(false);
           setAlias("");
           setIsGenerated(false);
-          toast({
-            title: "Error occured",
-            description: result.data,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          });
+          Toast("Error occured", result.data, true);
         }
       });
   };
+  const handleEmpty = () => {
+    if (!isUrlValid) {
+      Toast("Url invalid", "Please enter a valid url", true);
+    } else if (isUrlEmpty && isAliasEmpty) {
+      Toast(
+        "Long url and short url empty",
+        "Please enter long url and short url",
+        true
+      );
+    } else if (isUrlEmpty) {
+      Toast("Long url empty", "Please enter long url", true);
+    } else if (isAliasEmpty) {
+      Toast("Short url empty", "Please enter short url", true);
+    }
+  };
 
   useEffect(() => {
-    if (!!alias && isUrlValid) {
+    if (!!alias && isUrlValid && !isUrlEmpty) {
       return setIsAllowed(true);
     }
+
     setIsAllowed(false);
   }, [url, alias]);
 
@@ -135,7 +147,9 @@ const HomePage = () => {
           </div>
           <Button
             disabled={!isAllowed}
-            onClick={() => isAllowed && !isLoading && handleSubmit()}
+            onClick={() =>
+              isAllowed && !isLoading ? handleSubmit() : handleEmpty()
+            }
             isLoading={isLoading}
           >
             <div className=" font-semibold text-lg">Shorten!</div>
