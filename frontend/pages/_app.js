@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:image"
-          content="https://ebiaicqphbxvmztakwcm.supabase.co/storage/v1/object/sign/files/link-og-image?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9saW5rLW9nLWltYWdlIiwiaWF0IjoxNjIwMzkxNjMxLCJleHAiOjE5MzU3NTE2MzF9.pHRxsG-BOME2i3g5gMM6V2j7gMuFXqHvwUFg8bU2bwo"
+          content="https://i.ibb.co/cFVS07D/ristek-link.jpg"
           key="ogimage"
         />
         <meta property="og:title" content="RISTEK.link" key="ogtitle" />
@@ -33,6 +33,19 @@ function MyApp({ Component, pageProps }) {
           key="ogdesc"
         />
         <meta property="og:url" content="https://ristek.link" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="RISTEK.link" />
+        <meta
+          name="twitter:image"
+          content="https://i.ibb.co/cFVS07D/ristek-link.jpg"
+        />
+        <meta name="twitter:image:alt" content="Ristek OSS" />
+        <meta
+          name="twitter:description"
+          content="No config customizable url shortener."
+        />
+        <meta name="twitter:site" content="@RistekOSS" />
+        <meta name="twitter:creator" content="@RistekOSS" />
         <link rel="shortcut icon" href="/logo.svg" />
       </Head>
       <Component {...pageProps} />
