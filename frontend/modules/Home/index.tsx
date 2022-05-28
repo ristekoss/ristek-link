@@ -8,6 +8,8 @@ import Button from "../components/Button";
 import ResultBox from "../components/ResultBox";
 import { useToast } from "@chakra-ui/react";
 import useClipboard from "react-use-clipboard";
+import { useRouter } from 'next/router'
+import { BASENAME_URL } from '../Constants'
 
 const HomePage = () => {
   const [alias, setAlias] = useState("");
@@ -17,7 +19,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isGenerated, setIsGenerated] = useState(false);
   const [result, setResult] = useState("");
-  const [isCopied, setCopied] = useClipboard(`https://ristek.link/${result}`, {
+  const [isCopied, setCopied] = useClipboard(`${BASENAME_URL}/${result}`, {
     successDuration: 3000,
   });
   const toast = useToast();
@@ -62,9 +64,11 @@ const HomePage = () => {
           setIsLoading(false);
           setAlias("");
           setIsGenerated(false);
+          let message
+          if (result.error === "AlreadyExists") message = `The short url /${alias} already exists. Please choose another one.`
           toast({
             title: "Error occured",
-            description: result.data,
+            description: result.message,
             status: "error",
             duration: 5000,
             isClosable: true,
@@ -72,6 +76,20 @@ const HomePage = () => {
         }
       });
   };
+
+  const router = useRouter();
+  useEffect(() => {
+    const { notfound } = router.query
+    if (notfound) {
+      toast({
+        title: "Error occured",
+        description: `The short url /${notfound} does not exist.`,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  },[router])
 
   useEffect(() => {
     if (!!alias && isUrlValid) {

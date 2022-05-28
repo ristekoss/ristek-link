@@ -36,10 +36,10 @@ const handleRequest = async event => {
       if (!!existing_short_url) {
         return new Response(
           JSON.stringify({
-            data: `The short url /${short_url} already exists. Please choose another one.`,
             ok: false,
+            error: 'AlreadyExists'
           }),
-          { status: 200, headers: corsHeaders },
+          { status: 400, headers: corsHeaders },
         )
       }
       const _ = await LINKS.put(short_url, long_url)
@@ -60,11 +60,11 @@ const handleRequest = async event => {
       }
       return new Response(
         JSON.stringify({
-          data: `The short url /${short_url} does not exist.`,
           ok: false,
+          error: 'NotFound'
         }),
         {
-          status: 200,
+          status: 404,
           headers: corsHeaders,
         },
       )
