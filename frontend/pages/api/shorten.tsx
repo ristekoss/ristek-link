@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { SHORTEN_URL } from "../../modules/Constants";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const { alias, url } = req.body;
     const result = await fetch(
-      "https://ristek-link-workers.jonathanfilbert.workers.dev/shorten",
+      SHORTEN_URL,
       {
         method: "POST",
         headers: {
