@@ -1,6 +1,6 @@
-import * as React from "react"
+import { SVGProps } from 'react';
 
-function Logo(props: React.SVGProps<SVGSVGElement>) {
+function Logo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={32}
@@ -211,7 +211,7 @@ function Logo(props: React.SVGProps<SVGSVGElement>) {
         </radialGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default Logo
+export default Logo;

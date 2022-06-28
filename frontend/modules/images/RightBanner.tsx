@@ -1,6 +1,6 @@
-import * as React from "react"
+import { SVGProps } from 'react';
 
-function RightBanner(props: React.SVGProps<SVGSVGElement>) {
+function RightBanner(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={268}
@@ -52,7 +52,7 @@ function RightBanner(props: React.SVGProps<SVGSVGElement>) {
         </clipPath>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default RightBanner
+export default RightBanner;

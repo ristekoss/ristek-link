@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import LeftBanner from '../images/LeftBanner';
-import RightBanner from '../images/RightBanner';
-import RistekLogo from '../images/Logo';
-import BottomBanner from '../images/Bottom';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import ResultBox from '../components/ResultBox';
+import LeftBanner from '@/images/LeftBanner';
+import RightBanner from '@/images/RightBanner';
+import RistekLogo from '@/images/Logo';
+import BottomBanner from '@/images/Bottom';
+import Input from '@/components/Input';
+import Button from '@/components/Button';
+import ResultBox from '@/components/ResultBox';
 import { useToast } from '@chakra-ui/react';
 import useClipboard from 'react-use-clipboard';
 
@@ -99,7 +99,7 @@ const HomePage = () => {
       >
         <RistekLogo className="animate-fade-in" />
       </a>
-      <div className="w-full h-full px-5 my-0 mx-auto absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 flex flex-col justify-center items-center">
+      <div className="w-full h-full px-5 my-0 mx-auto absolute flex flex-col justify-center items-center">
         <div className="font-poppins font-bold text-4xl md:text-6xl text-black text-center animate-tracking-in-expand">
           RISTEK.<span className="text-primary">LINK</span>
         </div>
