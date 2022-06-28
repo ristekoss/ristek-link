@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import LeftBanner from "../images/LeftBanner";
-import RightBanner from "../images/RightBanner";
-import RistekLogo from "../images/Logo";
-import BottomBanner from "../images/Bottom";
-import Input from "../components/Input";
-import Button from "../components/Button";
-import ResultBox from "../components/ResultBox";
-import { useToast } from "@chakra-ui/react";
-import useClipboard from "react-use-clipboard";
+import React, { useState, useEffect } from 'react';
+import LeftBanner from '../images/LeftBanner';
+import RightBanner from '../images/RightBanner';
+import RistekLogo from '../images/Logo';
+import BottomBanner from '../images/Bottom';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import ResultBox from '../components/ResultBox';
+import { useToast } from '@chakra-ui/react';
+import useClipboard from 'react-use-clipboard';
 
 const HomePage = () => {
-  const [alias, setAlias] = useState("");
-  const [url, setUrl] = useState("");
+  const [alias, setAlias] = useState('');
+  const [url, setUrl] = useState('');
   const [isAllowed, setIsAllowed] = useState(false);
   const [isUrlValid, setIsUrlValid] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isGenerated, setIsGenerated] = useState(false);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState('');
   const [isCopied, setCopied] = useClipboard(`https://ristek.link/${result}`, {
     successDuration: 3000,
   });
@@ -27,7 +27,7 @@ const HomePage = () => {
     const urlRegexPattern =
       /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
     var regex = new RegExp(urlRegexPattern);
-    if (text.match(regex) && text.split(" ").length === 1) {
+    if (text.match(regex) && text.split(' ').length === 1) {
       setIsAllowed(true);
       setIsUrlValid(true);
       return;
@@ -37,14 +37,27 @@ const HomePage = () => {
   };
 
   const handleAliasType = (text: string) => {
-    setAlias(text.split(" ").length > 1 ? text.split(" ").join("-") : text);
+    setAlias(text.split(' ').length > 1 ? text.split(' ').join('-') : text);
+  };
+
+  const onError = (description?: string) => {
+    setIsLoading(false);
+    setAlias('');
+    setIsGenerated(false);
+    toast({
+      title: 'Error occured',
+      description,
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+    });
   };
 
   const handleSubmit = () => {
     setIsLoading(true);
-    fetch("/api/shorten", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
+    fetch('/api/shorten', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
         alias,
         url,
@@ -52,25 +65,15 @@ const HomePage = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result.ok) {
-          setResult(result.data);
-          setIsGenerated(true);
-          setIsLoading(false);
-          setUrl("");
-          setAlias("");
-        } else {
-          setIsLoading(false);
-          setAlias("");
-          setIsGenerated(false);
-          toast({
-            title: "Error occured",
-            description: result.data,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          });
-        }
-      });
+        if (!result?.ok) return onError(result.data);
+
+        setResult(result.data);
+        setIsGenerated(true);
+        setIsLoading(false);
+        setUrl('');
+        setAlias('');
+      })
+      .catch(() => onError('Something went wrong'));
   };
 
   useEffect(() => {
@@ -85,7 +88,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="w-full h-screen max-h-screen overflow-hidden relative ">
+    <div className="w-full h-screen max-h-screen overflow-hidden relative">
       <LeftBanner className="absolute top-0 left-0 hidden h-screen w-auto lg:block animate-fade-in" />
       <BottomBanner className="block lg:hidden absolute bottom-0 w-full h-auto animate-fade-in" />
       <RightBanner className="absolute top-0 right-0 hidden h-screen w-auto lg:block animate-fade-in" />
@@ -96,20 +99,7 @@ const HomePage = () => {
       >
         <RistekLogo className="animate-fade-in" />
       </a>
-      <div
-        className="w-full px-5"
-        style={{
-          margin: "0 auto",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className="w-full h-full px-5 my-0 mx-auto absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 flex flex-col justify-center items-center">
         <div className="font-poppins font-bold text-4xl md:text-6xl text-black text-center animate-tracking-in-expand">
           RISTEK.<span className="text-primary">LINK</span>
         </div>
@@ -123,7 +113,7 @@ const HomePage = () => {
             value={url}
             onChange={(e) => handleUrlType(e.target.value)}
             isError={!isUrlValid}
-            errorMessage={isUrlValid ? "" : "Please enter a valid url."}
+            errorMessage={isUrlValid ? '' : 'Please enter a valid url.'}
           />
           <div className="my-5 flex flex-row items-center w-full justify-center">
             <div className="font-poppins font-medium mr-1">ristek.link/</div>
@@ -155,10 +145,10 @@ const HomePage = () => {
           href="https://www.producthunt.com/posts/ristek-link?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ristek-link"
           target="_blank"
           style={{
-            position: "absolute",
+            position: 'absolute',
             bottom: 10,
-            left: "50%",
-            transform: "translate(-50%, 0)",
+            left: '50%',
+            transform: 'translate(-50%, 0)',
           }}
         >
           <img
