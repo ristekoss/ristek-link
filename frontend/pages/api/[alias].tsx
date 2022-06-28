@@ -1,14 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { alias } = req.query;
   const result = await fetch(
-    "https://ristek-link-workers.jonathanfilbert.workers.dev/retrieve",
+    'https://ristek-link-workers.jonathanfilbert.workers.dev/retrieve',
     {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: process.env.SECRET,
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify({ short_url: alias }),
     }

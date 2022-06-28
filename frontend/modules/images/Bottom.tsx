@@ -1,6 +1,6 @@
-import * as React from "react"
+import { SVGProps } from 'react';
 
-function Bottom(props: React.SVGProps<SVGSVGElement>) {
+function Bottom(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={376}
@@ -59,7 +59,7 @@ function Bottom(props: React.SVGProps<SVGSVGElement>) {
         </clipPath>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default Bottom
+export default Bottom;
